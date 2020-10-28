@@ -1,0 +1,21 @@
+[GC (Allocation Failure) [PSYoungGen: 524800K->87035K(611840K)] 524800K->149318K(2010112K), 0.0221346 secs] [Times: user=0.03 sys=0.16, real=0.02 secs]
+[GC (Allocation Failure) [PSYoungGen: 611835K->87038K(611840K)] 674118K->266540K(2010112K), 0.0280910 secs] [Times: user=0.06 sys=0.13, real=0.03 secs]
+[GC (Allocation Failure) [PSYoungGen: 611838K->87039K(611840K)] 791340K->377041K(2010112K), 0.0292110 secs] [Times: user=0.14 sys=0.05, real=0.03 secs]
+[GC (Allocation Failure) [PSYoungGen: 611839K->87039K(611840K)] 901841K->485098K(2010112K), 0.0325560 secs] [Times: user=0.09 sys=0.06, real=0.03 secs]
+[GC (Allocation Failure) [PSYoungGen: 611839K->87027K(611840K)] 1009898K->583665K(2010112K), 0.0323562 secs] [Times: user=0.11 sys=0.06, real=0.03 secs]
+[GC (Allocation Failure) [PSYoungGen: 611827K->87026K(356864K)] 1108465K->687451K(1755136K), 0.0329129 secs] [Times: user=0.02 sys=0.05, real=0.03 secs]
+[GC (Allocation Failure) [PSYoungGen: 356850K->143835K(413696K)] 957275K->750266K(1811968K), 0.0236540 secs] [Times: user=0.06 sys=0.00, real=0.02 secs]
+[GC (Allocation Failure) [PSYoungGen: 413659K->189117K(479744K)] 1020090K->808624K(1878016K), 0.0274086 secs] [Times: user=0.08 sys=0.00, real=0.03 secs]
+[GC (Allocation Failure) [PSYoungGen: 448701K->202678K(462336K)] 1068208K->847714K(1860608K), 0.0301339 secs] [Times: user=0.17 sys=0.00, real=0.03 secs]
+[GC (Allocation Failure) [PSYoungGen: 462262K->152582K(473088K)] 1107298K->885602K(1871360K), 0.0344543 secs] [Times: user=0.14 sys=0.03, real=0.03 secs]
+[GC (Allocation Failure) [PSYoungGen: 401926K->77671K(327168K)] 1134946K->930455K(1725440K), 0.0333478 secs] [Times: user=0.11 sys=0.09, real=0.03 secs]
+执行结束!共生成对象次数:16731
+Heap
+ PSYoungGen      total 327168K, used 87994K [0x00000000d5580000, 0x0000000100000000, 0x0000000100000000)
+  eden space 249344K, 4% used [0x00000000d5580000,0x00000000d5f94aa0,0x00000000e4900000)
+  from space 77824K, 99% used [0x00000000e4900000,0x00000000e94d9f30,0x00000000e9500000)
+  to   space 232960K, 0% used [0x00000000f1c80000,0x00000000f1c80000,0x0000000100000000)
+ ParOldGen       total 1398272K, used 852783K [0x0000000080000000, 0x00000000d5580000, 0x00000000d5580000)
+  object space 1398272K, 60% used [0x0000000080000000,0x00000000b40cbd50,0x00000000d5580000)
+ Metaspace       used 2627K, capacity 4486K, committed 4864K, reserved 1056768K
+  class space    used 290K, capacity 386K, committed 512K, reserved 1048576K
