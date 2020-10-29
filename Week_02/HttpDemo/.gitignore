@@ -1,6 +1,4 @@
 # Default ignored files
-/.idea
-/out
-Week_01.iml
 /out/
 /.idea/
+/target/
