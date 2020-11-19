@@ -5,7 +5,10 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
 
 import java.util.List;
 import java.util.Map;
@@ -15,6 +18,11 @@ import java.util.UUID;
 public class hikaridemo implements ApplicationRunner {
     @Autowired
     private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private DataSourceTransactionManager dataSourceTransactionManager;
+    @Autowired
+    private TransactionDefinition transactionDefinition;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println(jdbcTemplate);
@@ -25,15 +33,32 @@ public class hikaridemo implements ApplicationRunner {
         showUser();
         delete();
         showUser();
+        System.out.println("---------------transaction----------------");
+        transaction();
+        showUser();
+        System.out.println("---------------transaction----------------");
     }
 
-    private void createTable(){
+    private void createTable() {
         jdbcTemplate.execute("DROP TABLE IF EXISTS USER_INFO");
         jdbcTemplate.execute("CREATE TABLE USER_INFO(id VARCHAR(36) PRIMARY KEY,name VARCHAR(100),sex VARCHAR(4))");
         System.out.println("UserInfo表创建成功");
+
     }
 
-    private void insert()  {
+    private void transaction() {
+        TransactionStatus transactionStatus = dataSourceTransactionManager.getTransaction(transactionDefinition);
+        try {
+            jdbcTemplate.update("INSERT INTO USER_INFO VALUES(?,?,?)", UUID.randomUUID(), "test1", "男");
+            jdbcTemplate.update("INSERT INTO USER_INFO2 VALUES(?,?,?)", UUID.randomUUID(), "test2", "男");
+            dataSourceTransactionManager.commit(transactionStatus);
+        } catch (Exception ex) {
+            dataSourceTransactionManager.rollback(transactionStatus);
+            ex.printStackTrace();
+        }
+    }
+
+    private void insert() {
         jdbcTemplate.update("INSERT INTO USER_INFO VALUES(?,?,?)", UUID.randomUUID(), "张三", "男");
         System.out.println("插入张三用户");
         jdbcTemplate.update("INSERT INTO USER_INFO VALUES(?,?,?)", UUID.randomUUID(), "李四", "男");
