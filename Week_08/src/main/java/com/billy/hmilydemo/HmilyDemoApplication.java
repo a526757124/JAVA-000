@@ -1,15 +1,13 @@
-package com.billy.starter;
+package com.billy.hmilydemo;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@Slf4j
-public class StarterApplication {
+public class HmilyDemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(StarterApplication.class, args);
+        SpringApplication.run(HmilyDemoApplication.class, args);
     }
 
 }
