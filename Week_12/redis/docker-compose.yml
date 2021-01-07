@@ -1,0 +1,33 @@
+﻿version: '3'
+services:
+  master:
+    image: redis
+    container_name: docker_redis_master
+    ports:
+      - 6380:6379
+    volumes:
+      - ./conf/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf --requirepass 123456  --masterauth 123456
+    restart: always
+  slave01:
+    image: redis
+    container_name: docker_redis_slave01
+    ports:
+      - 6381:6379
+    volumes:
+      - ./conf/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf --replicaof docker_redis_master 6379  --requirepass 123456  --masterauth 123456
+    restart: always
+  slave02:
+    image: redis
+    container_name: docker_redis_slave02
+    ports:
+      - 6382:6379
+    volumes:
+      - ./conf/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf --replicaof docker_redis_master 6379  --requirepass 123456  --masterauth 123456
+    restart: always
+networks:
+  default:
+    external:
+      name: mysql_default

@@ -1,0 +1,36 @@
+﻿version: '3'
+services:
+  redis01:
+    image: redis
+    container_name: docker_redis01
+    ports:
+      - 6380:6379
+    volumes:
+      - ./conf/redis.conf:/usr/local/etc/redis/redis.conf:rw
+    command: redis-server /usr/local/etc/redis/redis.conf
+    restart: always
+    privileged: true
+  redis02:
+    image: redis
+    container_name: docker_redis02
+    ports:
+      - 6381:6379
+    volumes:
+      - ./conf/redis.conf:/usr/local/etc/redis/redis.conf:rw
+    command: redis-server /usr/local/etc/redis/redis.conf
+    restart: always
+    privileged: true
+  redis03:
+    image: redis
+    container_name: docker_redis03
+    ports:
+      - 6382:6379
+    volumes:
+      - ./conf/redis.conf:/usr/local/etc/redis/redis.conf:rw
+    command: redis-server /usr/local/etc/redis/redis.conf
+    restart: always
+    privileged: true
+networks:
+  default:
+    external:
+      name: mysql_default

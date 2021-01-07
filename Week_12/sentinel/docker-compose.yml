@@ -1,0 +1,36 @@
+﻿version: '3'
+services:
+  sentinel01:
+    image: redis
+    container_name: docker_redis_sentinel01
+    ports:
+      - 26379:26379
+    volumes:
+      - ./conf/sentinel.conf:/usr/local/etc/redis/sentinel.conf:rw
+    command: redis-sentinel /usr/local/etc/redis/sentinel.conf
+    privileged: true
+    restart: always
+  sentinel02:
+    image: redis
+    container_name: docker_redis_sentinel02
+    ports:
+      - 26380:26379
+    volumes:
+      - ./conf/sentinel.conf:/usr/local/etc/redis/sentinel.conf:rw
+    command: redis-sentinel /usr/local/etc/redis/sentinel.conf
+    privileged: true
+    restart: always
+  sentinel03:
+    image: redis
+    container_name: docker_redis_sentinel03
+    ports:
+      - 26381:26379
+    volumes:
+      - ./conf/sentinel.conf:/usr/local/etc/redis/sentinel.conf:rw
+    command: redis-sentinel /usr/local/etc/redis/sentinel.conf
+    privileged: true
+    restart: always
+networks:
+  default:
+    external:
+      name: mysql_default
